@@ -9,26 +9,26 @@ markdown: kramdown
 
 # The title and tagline is showed on homepage
 #
-title :  Simpleyyt 
-tagline: Yitao's Blog
+title :  Life of coding
+tagline: Dex's Blog
 
 # Information about author
 #
 author :
-  name : Yitao Yao
+  name : Dex Chen
   
 # Information for contacts
 #
 contact :
-  e-mail : mailto:simpleyyt@gmail.com
-  Github : https://github.com/Simpleyyt
-  WeiBo : http://www.weibo.com/u/1836017133
-  Google+ : https://plus.google.com/103860633659538888207?rel=author
+  e-mail : mailto:chienhua@gmail.com
+  Github : https://github.com/dex
+  #WeiBo : http://www.weibo.com/u/1836017133
+  #Google+ : https://plus.google.com/103860633659538888207?rel=author
   
 # Links showed on the footer
 #
 links :
-  Yitao's Blog : http://simpleyyt.github.io/
+  Dex's Blog : http://dex.idv.tw/
 
 # The search engine. Only support google custom search engine.
 #
@@ -48,7 +48,7 @@ search :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://simpleyyt.github.io
+production_url : http://dex.idv.tw
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -105,19 +105,19 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : duoshuo
+    provider : facebook
     duoshuo :
       short_name : simpleyyt
     disqus :
-      short_name : simpleyyt
+      short_name : jekyllbootstrap
     livefyre :
       site_id : 123
     intensedebate :
       account : 123abc
     facebook :
-      appid : 123
+      appid : 457281317751737
       num_posts: 5
-      width: 580
+      width: 932
       colorscheme: light
    
   # Settings for analytics helper
