@@ -39,7 +39,7 @@ search :
   # Your Google custom search engine ID
   #
   gcse :
-    cx : 004255214185073801838:_icnlls8kds
+    cx : 013155256099403871930:5ptuyuqt7so
   
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
