@@ -6,4 +6,4 @@ category: Blog
 tags: blog
 ---
 
-This is my first post of Jeyll. This tool is awesome!
+This is my first post of Jekyll. This tool is awesome!
