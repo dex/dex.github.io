@@ -6,7 +6,7 @@ category: Linux
 tags: Linux RPi IPv6
 ---
 
-# Introdouction #
+# Introduction #
 
 There are two types of IPv6 configuration for IPv4.
 
@@ -62,3 +62,6 @@ In order to send RA, you have to install `radvd` and configure `/etc/radvd.conf`
 
 You can replace the `ppp0` with your WAN interface name.
 Then run the `radvd` daemon.
+
+# Reference #
+* [IPv6 and 6to4 with dynamic WAN IP](http://blog.dev001.net/post/33503557513/dd-wrt-ipv6-and-6to4-with-dynamic-wan-ip)
