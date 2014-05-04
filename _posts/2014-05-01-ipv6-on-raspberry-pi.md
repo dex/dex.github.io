@@ -10,12 +10,12 @@ tags: Linux RPi IPv6
 
 There are two types of IPv6 configuration for IPv4.
 
-* 6in4: This is most common configuration for IPv4 users. This type of IPv6 will use TSP (Tunnel Setup Protocol).
-* 6to4: Automatic tunnel. If you have a public IPv4 address, this method is out-of-box for linux users. It use a mapping between IPv4 address and IPv6 prefix. (e.q. 2002:*XXXX:YYYY*::/48 where *XXXX:YYYY* is IPv4 address in hex)
+* **6in4**: This is most common configuration for IPv4 users. This type of IPv6 will use TSP (Tunnel Setup Protocol).
+* **6to4**: Automatic tunnel. If you have a public IPv4 address, this method is out-of-box for linux users. It use a mapping between IPv4 address and IPv6 prefix. (e.q. 2002:*XXXX:YYYY*::/48 where *XXXX:YYYY* is IPv4 address in hex)
 
 # Configuration #
 	
-There are three steps to make a IPv6-ready home box.
+There are two steps to make a IPv6-ready home box.
 
 1. A 6to4 tunnel interface and binding an IPv6 address to it.
 2. Setup radvd (optional if you want to setup an IPv6 subnet)
@@ -31,7 +31,7 @@ Now we need an  IPv6 address for `sit0` interface according to the IPv4 address 
 
 	ip -6 addr add 2002:XXXX:YYYY::1/16 dev sit0
 
-The prefix must be *16* due to all 6to4 IPv6 addresses should be handled by `sit0`.
+The prefix must be **16** due to all 6to4 IPv6 addresses should be handled by `sit0`.
 
 Then the default route should be:
 
