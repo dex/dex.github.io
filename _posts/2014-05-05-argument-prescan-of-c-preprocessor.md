@@ -37,7 +37,7 @@ So that I wrote an another example:
 		return 0;
 	}
 
-Finally, the output is "lala". I did not understand util I found this [document](http://gcc.gnu.org/onlinedocs/cpp/Argument-Prescan.html#Argument-Prescan)
+Finally, the output is `"lala"`. I did not understand util I found this [document](http://gcc.gnu.org/onlinedocs/cpp/Argument-Prescan.html#Argument-Prescan)
 
 > Argument Prescan
 > 
