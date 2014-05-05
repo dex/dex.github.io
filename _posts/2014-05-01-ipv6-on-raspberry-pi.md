@@ -3,7 +3,7 @@ layout: post
 title: "IPv6 on Raspberry Pi"
 published: true
 category: Linux
-tags: Linux RPi IPv6
+tags: [Linux, RPi, IPv6, Networking]
 ---
 
 # Introduction #
@@ -11,7 +11,7 @@ tags: Linux RPi IPv6
 There are two types of IPv6 configuration for IPv4.
 
 * **6in4**: This is most common configuration for IPv4 users. This type of IPv6 will use TSP (Tunnel Setup Protocol).
-* **6to4**: Automatic tunnel. If you have a public IPv4 address, this method is out-of-box for linux users. It use a mapping between IPv4 address and IPv6 prefix. (e.q. 2002:*XXXX:YYYY*::/48 where *XXXX:YYYY* is IPv4 address in hex)
+* **6to4**: Automatic tunnel. If you have a public IPv4 address, this method is out-of-box for linux users. It use a mapping between IPv4 address and IPv6 prefix. (e.q. 2002:*XXXX:YYYY*::/48 where *XXXX:YYYY* is IPv4 address in hex). I prefer to use 6to4 tunnel due to native support by linux.
 
 # Configuration #
 	

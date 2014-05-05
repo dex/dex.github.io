@@ -2,7 +2,7 @@
 layout: post
 title: "Jekyll plugin for VIM"
 published: true
-tags: [vim]
+tags: [vim, jekyll]
 categories: [software]
 ---
 
