@@ -106,11 +106,11 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : facebook
+    provider : disqus
     duoshuo :
       short_name : simpleyyt
     disqus :
-      short_name : jekyllbootstrap
+      short_name : dex0827
     livefyre :
       site_id : 123
     intensedebate :
