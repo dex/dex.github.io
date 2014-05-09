@@ -13,7 +13,7 @@ In order to receive **NFLOG** packets, you should have the `CAP_NET_ADMIN` capab
 	sudo echo "capability net_admin," >> /etc/apparmor.d/local/usr.sbin.tcpdump
 	sudo apparmor_parser -r /etc/apparmor.d/usr.sbin.tcpdump
 
-Now, you can add `iptables` rule to capture packets via `NFLOG`. For example, capture all incoming TCP packets.
+Now, you can add `iptables` rule to capture packets via **NFLOG**. For example, capture all incoming TCP packets.
 
 	sudo iptables -A INPUT -p tcp -j NFLOG
 
@@ -21,7 +21,7 @@ Then use `nflog` as interface name while using `tcpdump` utility to receive pack
 
 	sudo tcpdump -i nflog
 
-Furthermore, you seperated the NFLOG traffic into differnt groups, use `nflog:<group_id>` as the interface name.
+Furthermore, if you seperated the **NFLOG** traffic into differnt groups, use `nflog:<group_id>` as the interface name.
 
 
-Reference: [Apparmor](https://help.ubuntu.com/community/AppArmor)
+Reference: [AppArmor](https://help.ubuntu.com/community/AppArmor)
