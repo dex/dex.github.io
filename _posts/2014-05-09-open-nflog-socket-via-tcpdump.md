@@ -22,3 +22,6 @@ Then use `nflog` as interface name while using `tcpdump` utility to receive pack
 	sudo tcpdump -i nflog
 
 Furthermore, you seperated the NFLOG traffic into differnt groups, use `nflog:<group_id>` as the interface name.
+
+
+Reference: [Apparmor](https://help.ubuntu.com/community/AppArmor)
