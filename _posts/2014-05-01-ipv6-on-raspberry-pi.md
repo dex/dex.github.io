@@ -37,6 +37,10 @@ Then the default route should be:
 
 	ip -6 ro add 2000::/3 via ::192.88.99.1 dev sit0 metric 1
 
+Or:
+
+	ip -6 ro add 2000::/3 via 2002:c058:6301::1 dev sit0 metric 1
+
 ## The radvd daemon ##
 
 If you want to setup an IPv6 subnet, there are two things must be done.
@@ -65,3 +69,4 @@ Then run the `radvd` daemon.
 
 # Reference #
 * [IPv6 and 6to4 with dynamic WAN IP](http://blog.dev001.net/post/33503557513/dd-wrt-ipv6-and-6to4-with-dynamic-wan-ip)
+* [6to4 Tunnel HowTo](http://www.tldp.org/HOWTO/Linux+IPv6-HOWTO/configuring-ipv6to4-tunnels.html)
