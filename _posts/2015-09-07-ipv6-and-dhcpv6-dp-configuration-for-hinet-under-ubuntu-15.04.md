@@ -2,7 +2,7 @@
 layout: post
 title: "IPv6 and DHCPv6-DP configuration for HiNet under Ubuntu 15.04"
 published: true
-tags: [Linux, IPv6, DHCPv6-DP, HiNet, Ubuntu, PPPoE]
+tags: [Linux, IPv6, DHCPv6-DP, HiNet, Ubuntu, PPPoE, Networking]
 categories: [Linux]
 ---
 
@@ -33,6 +33,8 @@ Add the following lines in `/etc/ppp/options`:
 Add the following line in `/etc/sysctl.conf`
 
 	net.ipv6.conf.ppp0.accept_ra=2
+
+Set to `2` when IPv6 forwarding is enabled.
 
 ## Hook script ##
 
