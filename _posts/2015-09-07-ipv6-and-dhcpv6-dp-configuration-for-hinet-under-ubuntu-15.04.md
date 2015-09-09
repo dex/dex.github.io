@@ -82,7 +82,7 @@ We need hook script to invoke the wide-dhcpv6-client after IPv6 is ready on PPP 
 	  };
 	};
 
-Since HiNet only provides /64 prefix for DHCPv6-DP, the `sla-len` must be set to `0`.
+Since HiNet only provides `/64` prefix for DHCPv6-DP, the `sla-len` must be set to `0`.
 
 ## Hook script ##
 
