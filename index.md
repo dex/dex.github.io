@@ -1,4 +1,3 @@
 ---
-layout: posts
-group: home
+layout: home
 ---
