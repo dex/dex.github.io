@@ -28,8 +28,6 @@ plainwhite:
   social_links:
           #twitter: samarsault
     github:  dex
-    disqus_shortname: dex0827
-    analytics_id: "UA-414527-5"
     #linkedIn: in/samarsault
     #rss: rss
     #dribbble: jekyll
@@ -48,6 +46,9 @@ plainwhite:
     #   instance: example.com
     # - username: jekyll2
     #   instance: example.com
+    #
+  disqus_shortname: dex0827
+  analytics_id: "UA-414527-5"
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
