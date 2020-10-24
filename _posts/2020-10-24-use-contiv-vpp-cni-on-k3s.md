@@ -6,32 +6,37 @@ tags: [Kubernetes, Networking]
 categories: [Kubernetes]
 ---
 
-By default, `fannel` is used as CNI plugin on K3s. K3s provides a confiugration during installation: `--flannel-backend=none`. Contiv-VPP is an alternative to have use-space data plane for K3s. Unfortunately, it only supports `docker` as container runtime due to compatibility issue on naming of network namespace. So if you would like to use Contiv-VPP as CNI on K3s, you might need to use the following command for our installation:
-
-    curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --flannel-backend=none" sh -s - --docker
+Contiv-VPP is an alternative to have use-space data plane for K3s. And I tried to install Contiv-VPP on K3s with default configuration. When I finished installation, realized Pods on K3s failed to create Pod networking interface with Contiv-VPP CNI. After some investigation on Contiv-VPP along with source code. I realized `containerd` as default container runtime of K3s was not supported by Contiv-VPP due to naming of network namespace is different between `containerd` and `docker` ([here](https://github.com/rancher/k3s/blob/03f05f93370f636fd3c5162a06fee54e40f9dd91/vendor/github.com/containerd/cri/pkg/netns/netns_unix.go#L72) and [here](https://github.com/contiv/vpp/blob/c6ed55900e77dd14b8705dc6fa6d90f7a8b70b56/plugins/ipnet/pod.go#L1128)). So `docker` is required as container runtime if you would like to enable Contiv-VPP as CNI. By default, `fannel` is used as CNI plugin on K3s. K3s provides a confiugration during installation: `--flannel-backend=none`. So the command to install K3s should be:
+```
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --flannel-backend=none" sh -s - --docker
+```
     
 Since Contiv-VPP uses DPDK as its underlying library for process packets from NICs. Needs to make sure hugepages is enabled on host. The following command could be used to enable it:
-
-    sysctl -w vm.nr_hugepages=512
-    
-Now, we are ready to install Contiv-VPP. Since the default node selector from Contiv-VPP didn't match what K3s provides. We need to change it before applying YAML file:
-
-    curl -sfL https://raw.githubusercontent.com/contiv/vpp/master/k8s/contiv-vpp.yaml | sed 's#node-role.kubernetes.io/master: ""#node-role.kubernetes.io/master: "true"#' | sudo /usr/local/bin/k3s kubectl apply -f -
-    
-Few miniutes later, check the pods running on your K3s:
 ```
-$ sudo /usr/local/bin/k3s kubectl get pods -n kube-system -o wide
-NAME                                     READY   STATUS      RESTARTS   AGE   IP              NODE      NOMINATED NODE   READINESS GATES
-contiv-etcd-0                            1/1     Running     0          14h   10.206.66.222   centos7   <none>           <none>
-contiv-crd-tb289                         1/1     Running     0          14h   10.206.66.222   centos7   <none>           <none>
-contiv-vswitch-mfstf                     1/1     Running     0          14h   10.206.66.222   centos7   <none>           <none>
-contiv-ksr-xl689                         1/1     Running     0          14h   10.206.66.222   centos7   <none>           <none>
-helm-install-traefik-hzrts               0/1     Completed   0          14h   10.1.1.3        centos7   <none>           <none>
-coredns-7944c66d8d-jv4rr                 1/1     Running     0          14h   10.1.1.2        centos7   <none>           <none>
-local-path-provisioner-6d59f47c7-8s7qp   1/1     Running     0          14h   10.1.1.4        centos7   <none>           <none>
-metrics-server-7566d596c8-l6hlh          1/1     Running     0          14h   10.1.1.5        centos7   <none>           <none>
-svclb-traefik-8cfcf                      2/2     Running     0          14h   10.1.1.6        centos7   <none>           <none>
-traefik-758cd5fc85-jv6j4                 1/1     Running     0          14h   10.1.1.7        centos7   <none>           <none>
+sysctl -w vm.nr_hugepages=512
+```
+
+Now, we are ready to install Contiv-VPP. Since the [node selector](https://github.com/contiv/vpp/blob/c6ed55900e77dd14b8705dc6fa6d90f7a8b70b56/k8s/contiv-vpp.yaml#L214) in `contiv-vpp.yaml` from Contiv-VPP didn't match [what K3s provides](https://github.com/rancher/k3s/blob/03f05f93370f636fd3c5162a06fee54e40f9dd91/pkg/server/server.go#L441). We need to change it before applying YAML file:
+```
+curl -sfL https://raw.githubusercontent.com/contiv/vpp/master/k8s/contiv-vpp.yaml \
+    | sed 's#node-role.kubernetes.io/master: ""#node-role.kubernetes.io/master: "true"#' \
+    | sudo /usr/local/bin/k3s kubectl apply -f -
+```    
+
+Few miniutes later, check the pods running on your K3s, and it should look like the following:
+```
+$ sudo /usr/local/bin/k3s kubectl get pods -n kube-system
+NAME                                     READY   STATUS      RESTARTS   AGE
+contiv-etcd-0                            1/1     Running     0          14h
+contiv-crd-tb289                         1/1     Running     0          14h
+contiv-vswitch-mfstf                     1/1     Running     0          14h
+contiv-ksr-xl689                         1/1     Running     0          14h
+helm-install-traefik-hzrts               0/1     Completed   0          14h
+coredns-7944c66d8d-jv4rr                 1/1     Running     0          14h
+local-path-provisioner-6d59f47c7-8s7qp   1/1     Running     0          14h
+metrics-server-7566d596c8-l6hlh          1/1     Running     0          14h
+svclb-traefik-8cfcf                      2/2     Running     0          14h
+traefik-758cd5fc85-jv6j4                 1/1     Running     0          14h
 ```
 
 # References
