@@ -35,6 +35,6 @@ traefik-758cd5fc85-jv6j4                 1/1     Running     0          14h   10
 ```
 
 # References
-  - https://rancher.com/docs/k3s/latest/en/installation/network-options/
-  - https://rancher.com/docs/k3s/latest/en/advanced/
-  - https://github.com/contiv/vpp/blob/master/docs/setup/MANUAL_INSTALL.md
+  - <https://rancher.com/docs/k3s/latest/en/installation/network-options/>
+  - <https://rancher.com/docs/k3s/latest/en/advanced/>
+  - <https://github.com/contiv/vpp/blob/master/docs/setup/MANUAL_INSTALL.md>
