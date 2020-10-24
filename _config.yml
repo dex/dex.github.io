@@ -26,19 +26,19 @@ plainwhite:
     - post
   # generate social links in footer
   social_links:
-          #twitter: samarsault
+    twitter: DexChen0827
     github:  dex
-    #linkedIn: in/samarsault
+    gitlab: dex
+    linkedIn: in/dex-chen-34591139
+    facebook: dex.chen
+    #instagram: dex0827
     #rss: rss
     #dribbble: jekyll
     #flickr:   jekyll
-    #instagram: jekyll
     #pinterest: jekyll
     #youtube: jekyll
-    facebook: dex.chen
     #soundcloud: jekyll
     #telegram: jekyll
-    #gitlab: jekyll
 
     # Mastodon instances
     # mastodon:
