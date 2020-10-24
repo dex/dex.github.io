@@ -13,7 +13,7 @@ $ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --flannel-backend=none
     
 Since Contiv-VPP uses DPDK as its underlying library for process packets from NICs. Needs to make sure hugepages is enabled on host. The following command could be used to enable it:
 ```
-$ sysctl -w vm.nr_hugepages=512
+$ sudo sysctl -w vm.nr_hugepages=512
 ```
 
 Now, we are ready to install Contiv-VPP. Since the [node selector](https://github.com/contiv/vpp/blob/c6ed55900e77dd14b8705dc6fa6d90f7a8b70b56/k8s/contiv-vpp.yaml#L214) in `contiv-vpp.yaml` from Contiv-VPP didn't match [what K3s provides](https://github.com/rancher/k3s/blob/03f05f93370f636fd3c5162a06fee54e40f9dd91/pkg/server/server.go#L441). We need to change it before applying YAML file:
