@@ -11,7 +11,7 @@ Contiv-VPP is an alternative to have use-space data plane for K3s. And I tried t
 $ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --flannel-backend=none" sh -s - --docker
 ```
     
-Since Contiv-VPP uses DPDK as its underlying library for process packets from NICs. Needs to make sure hugepages is enabled on host. The following command could be used to enable it:
+Since Contiv-VPP uses DPDK as its underlying library for process packets from NICs. Needs to make sure hugepages is enabled on host. The following command could be used to enable it (need to restart K3s):
 ```
 $ sudo sysctl -w vm.nr_hugepages=512
 ```
